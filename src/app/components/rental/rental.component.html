@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Brand Name</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Rent Date</th>
+        <th scope="col">Return Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rentals; let i = index">
+        <th scope="row">{{ rental.id }}</th>
+        <td>{{ rentalDetails[i].carName }}</td>
+        <td>{{ rentalDetails[i].firstName }}</td>
+        <td>{{ rental.rentDate }}</td>
+        <td>{{ rental.returnDate }}</td>
+      </tr>
+    </tbody>
+  </table> 
