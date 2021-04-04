@@ -1,14 +1,24 @@
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Brand Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let brand of brands">
-        <th scope="row">{{brand.id}}</th>
-        <td>{{brand.name}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">Brand Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      (click)="clearCurrentBrand()"
+      routerLink="/cars"
+      [class]="getAllBrandClass()"
+    >
+      <td>All Brands</td>
+    </tr>
+    <tr
+      (click)="setCurrentBrand(brand)"
+      routerLink="/cars/brands/{{ brand.id }}"
+      *ngFor="let brand of brands"
+      [class]="getCurrentBrandClass(brand)"
+    >
+      <td>{{ brand.name }}</td>
+    </tr>
+  </tbody>
+</table>

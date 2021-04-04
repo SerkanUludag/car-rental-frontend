@@ -1,24 +1,30 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Car Name</th>
-      <th scope="col">Brand Name</th>
-      <th scope="col">Color Name</th>
-      <th scope="col">Model Year</th>
-      <th scope="col">Daily Price</th>
-      <th scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let car of cars; let i = index">
-      <th scope="row">{{ car.id }}</th>
-      <td>{{ carDetails[i].carName}}</td>
-      <td>{{ carDetails[i].brandName}}</td>
-      <td>{{ carDetails[i].colorName }}</td>
-      <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice }}</td>
-      <td>{{ car.description }}</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="dataLoaded" class="row ml-0 mr-0">
+  <div
+    *ngFor="let car of carDetails; let i = index"
+    class="col-md-4 col-sm-12 my-4"
+  >
+    <div class="card" style="width: 100%; justify-content: center">
+      <img
+        src="{{ imageBasePath }}{{ getCarImagePath(car) }}"
+        style="width: 100%; height: 10rem"
+        class="card-img-top"
+        alt="Car image"
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ car.carName }}</h5>
+        <hr />
+        <p><b>Brand :</b> {{ car.brandName }}</p>
+        <hr />
+        <p><b>Model Year :</b> {{ car.modelYear }}</p>
+        <hr />
+        <p><b>Daily Price :</b> {{ car.dailyPrice }}</p>
+        <hr />
+        <p><b>Color :</b> {{ car.colorName }}</p>
+        <hr />
+        <a routerLink="/cars/{{ cars[i].id }}" class="btn btn-outline-dark mt-2"
+          >Details</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
