@@ -21,14 +21,10 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     CustomerComponent,
     CarComponent,
     RentalComponent,
-    CarDetailComponent
+    CarDetailComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,24 +1,34 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Brand Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      (click)="clearCurrentBrand()"
-      routerLink="/cars"
-      [class]="getAllBrandClass()"
+<div>
+  <li
+    type="button"
+    (click)="clearCurrentBrand()"
+    routerLink="/cars"
+    class="list-group-item list-group-item-dark cursor-pointer"
+  >
+    All Brands
+
+    <i
+      style="margin-left: 5px"
+      data-bs-toggle="collapse"
+      data-bs-target="#brands-collapse"
+      (click)="setExpanded()"
+      [class]="getIconClass()"
+    ></i>
+    <span class="badge badge-primary" style="margin-left: 150px; color: black">
+      {{ brands.length }}</span
     >
-      <td>All Brands</td>
-    </tr>
-    <tr
-      (click)="setCurrentBrand(brand)"
-      routerLink="/cars/brands/{{ brand.id }}"
-      *ngFor="let brand of brands"
-      [class]="getCurrentBrandClass(brand)"
-    >
-      <td>{{ brand.name }}</td>
-    </tr>
-  </tbody>
-</table>
+  </li>
+  <div id="brands-collapse" class="panel-collapse collapse show">
+    <ul class="list-group">
+      <li
+        type="button"
+        *ngFor="let brand of brands"
+        (click)="setCurrentBrand(brand)"
+        routerLink="/cars/brands/{{ brand.id }}"
+        [class]="getCurrentBrandClass(brand)"
+      >
+        {{ brand.name }}
+      </li>
+    </ul>
+  </div>
+</div>

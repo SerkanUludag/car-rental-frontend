@@ -1,24 +1,33 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Color Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      routerLink="/cars"
-      (click)="clearCurrentColor()"
-      [class]="getAllColorClass()"
+<div>
+  <li
+    type="button"
+    (click)="clearCurrentColor()"
+    routerLink="/cars"
+    class="list-group-item list-group-item-dark cursor-pointer"
+  >
+    All Colors
+    <i
+      style="margin-left: 5px"
+      data-bs-toggle="collapse"
+      data-bs-target="#colors-collapse"
+      (click)="setExpanded()"
+      [class]="getIconClass()"
+    ></i>
+    <span class="badge badge-primary" style="margin-left: 150px; color: black">
+      {{ colors.length }}</span
     >
-      <td>All Colors</td>
-    </tr>
-    <tr
-      routerLink="/cars/colors/{{ color.id }}"
-      (click)="setCurrentColor(color)"
-      *ngFor="let color of colors"
-      [class]="getCurrentColorClass(color)"
-    >
-      <td>{{ color.name }}</td>
-    </tr>
-  </tbody>
-</table>
+  </li>
+  <div id="colors-collapse" class="panel-collapse collapse show">
+    <ul class="list-group">
+      <li
+        type="button"
+        *ngFor="let color of colors"
+        (click)="setCurrentColor(color)"
+        routerLink="/cars/colors/{{ color.id }}"
+        [class]="getCurrentColorClass(color)"
+      >
+        {{ color.name }}
+      </li>
+    </ul>
+  </div>
+</div>

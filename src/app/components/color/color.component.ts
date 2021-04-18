@@ -9,6 +9,7 @@ import { ColorService } from 'src/app/services/color/color.service';
 })
 export class ColorComponent implements OnInit {
   colors: Color[] = [];
+  isExpanded: boolean = true;
   currentColor: Color | null;
 
   constructor(private colorService: ColorService) {}
@@ -35,15 +36,27 @@ export class ColorComponent implements OnInit {
     }
   }
 
-  clearCurrentColor(){
+  clearCurrentColor() {
     this.currentColor = null;
   }
 
-  getAllColorClass(){
-    if(!this.currentColor){
+  getAllColorClass() {
+    if (!this.currentColor) {
       return 'list-group-item active';
-    }else{
+    } else {
       return 'list-group-item';
+    }
+  }
+
+  setExpanded() {
+    this.isExpanded = this.isExpanded == true ? false : true;
+  }
+
+  getIconClass() {
+    if (this.isExpanded) {
+      return 'fa fa-chevron-up';
+    } else {
+      return 'fa fa-chevron-down';
     }
   }
 }

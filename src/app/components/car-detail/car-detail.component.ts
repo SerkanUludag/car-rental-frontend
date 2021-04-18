@@ -14,7 +14,8 @@ import { environment } from 'src/environments/environment';
 })
 export class CarDetailComponent implements OnInit {
   car: Car;
-  carImages: CarImage[];
+  // carImages: CarImage[];
+  carImage: CarImage;
   details: CarDetail;
   dataLoaded: boolean = false;
 
@@ -48,7 +49,7 @@ export class CarDetailComponent implements OnInit {
 
   getCarImages(id: number) {
     this.carImageService.getCarImageById(id).subscribe((res) => {
-      this.carImages = res.data;
+      this.carImage = res.data[0];
       this.dataLoaded = true;
     });
   }

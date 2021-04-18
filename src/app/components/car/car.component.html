@@ -6,8 +6,8 @@
     <div class="card" style="width: 100%; justify-content: center">
       <img
         src="{{ imageBasePath }}{{ getCarImagePath(car) }}"
-        style="width: 100%; height: 10rem"
-        class="card-img-top"
+        style="width: 100%; height: 12rem"
+        class="card-img-top img-thumbnail"
         alt="Car image"
       />
       <div class="card-body">
@@ -17,7 +17,7 @@
         <hr />
         <p><b>Model Year :</b> {{ car.modelYear }}</p>
         <hr />
-        <p><b>Daily Price :</b> {{ car.dailyPrice }}</p>
+        <p><b>Daily Price :</b> {{ car.dailyPrice | currency }}</p>
         <hr />
         <p><b>Color :</b> {{ car.colorName }}</p>
         <hr />

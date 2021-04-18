@@ -11,6 +11,7 @@ export class BrandComponent implements OnInit {
   brands: Brand[] = [];
   dataLoaded = false;
   currentBrand: Brand | null;
+  isExpanded: boolean = true;
   constructor(private brandService: BrandService) {}
 
   ngOnInit(): void {
@@ -44,7 +45,19 @@ export class BrandComponent implements OnInit {
     }
   }
 
-  clearCurrentBrand(){
+  clearCurrentBrand() {
     this.currentBrand = null;
+  }
+
+  setExpanded() {
+    this.isExpanded = this.isExpanded == true ? false : true;
+  }
+
+  getIconClass() {
+    if (this.isExpanded) {
+      return 'fa fa-chevron-up';
+    } else {
+      return 'fa fa-chevron-down';
+    }
   }
 }

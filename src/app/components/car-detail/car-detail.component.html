@@ -1,64 +1,55 @@
-<div
-  *ngIf="dataLoaded"
-  id="carouselExampleIndicators"
-  class="carousel slide"
-  data-bs-ride="carousel"
->
-  <div class="carousel-indicators">
+<!-- <div *ngIf="dataLoaded" class="container">
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators">
+      <button
+        *ngFor="let carImage of carImages; let i = index"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        attr.data-bs-slide-to="{{ i }}"
+        class="{{ isCarouselActive(i) }}"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div
+        *ngFor="let carImage of carImages; let i = index"
+        class="carousel-item {{ isCarouselActive(i) }}"
+      >
+        <img
+          src="{{ imageBasePath }}{{ carImages[i].imagePath }}"
+          class="d-block w-100"
+          alt="Slide {{ i }}"
+        />
+      </div>
+    </div>
     <button
-      *ngFor="let carImage of carImages; let i = index"
+      class="carousel-control-prev"
       type="button"
       data-bs-target="#carouselExampleIndicators"
-      attr.data-bs-slide-to="{{ i }}"
-      class="{{ isCarouselActive(i) }}"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-  </div>
-  <div class="carousel-inner">
-    <div
-      *ngFor="let carImage of carImages; let i = index"
-      class="carousel-item {{ isCarouselActive(i) }}"
+      data-bs-slide="prev"
     >
-      <img
-        width="800px"
-        height="400px"
-        src="{{ imageBasePath }}{{ carImages[i].imagePath }}"
-        class="d-block w-100"
-        alt="Slide {{ i }}"
-      />
-    </div>
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#carouselExampleIndicators"
-    data-bs-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#carouselExampleIndicators"
-    data-bs-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Car Name</th>
-      <th scope="col">Brand Name</th>
-      <th scope="col">Color Name</th>
-      <th scope="col">Daily Price</th>
-      <th scope="col">Model Year</th>
-    </tr>
-  </thead>
+<table class="table table-striped">
   <tbody>
     <tr>
       <td>{{ details.carName }}</td>
@@ -68,4 +59,45 @@
       <td>{{ details.modelYear }}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
+<p class="h2">Review Your Choice</p>
+<hr />
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-5">
+      <img
+        src="{{ imageBasePath }}{{ carImage.imagePath }}"
+        class="mw-100"
+        alt="Car Image"
+      />
+    </div>
+    <div class="col-md-7">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td><i class="fa fa-check" style="color: green"></i> Model</td>
+            <td>{{ details.carName }}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-check" style="color: green"></i> Brand</td>
+            <td>{{ details.brandName }}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-check" style="color: green"></i> Color</td>
+            <td>{{ details.colorName }}</td>
+          </tr>
+          <tr>
+            <td>
+              <i class="fa fa-check" style="color: green"></i> Daily Price
+            </td>
+            <td>{{ details.dailyPrice | currency }}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-check" style="color: green"></i> Model Year</td>
+            <td>{{ details.modelYear }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
