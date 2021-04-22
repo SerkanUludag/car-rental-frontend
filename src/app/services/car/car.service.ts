@@ -18,7 +18,7 @@ export class CarService {
     );
   }
 
-  getCarDetailsById(carId:number): Observable<CarDetailResponseModel> {
+  getCarDetailsById(carId: number): Observable<CarDetailResponseModel> {
     return this.httpClient.get<CarDetailResponseModel>(
       `${this.API_URL}/api/cars/getcardetailsbyid?id=${carId}`
     );
@@ -48,15 +48,21 @@ export class CarService {
     );
   }
 
-  getCarsByColor(colorId:number):Observable<CarResponseModel>{
+  getCarsByColor(colorId: number): Observable<CarResponseModel> {
     return this.httpClient.get<CarResponseModel>(
       `${this.API_URL}/api/cars/getbycolor?id=${colorId}`
     );
   }
 
-  getCarById(id:number):Observable<CarResponseModel>{
+  getCarById(id: number): Observable<CarResponseModel> {
     return this.httpClient.get<CarResponseModel>(
       `${this.API_URL}/api/cars/get?id=${id}`
+    );
+  }
+
+  filter(brandId: number, colorId: number): Observable<CarDetailResponseModel> {
+    return this.httpClient.get<CarDetailResponseModel>(
+      `${this.API_URL}/api/cars/filter?brandId=${brandId}&colorId=${colorId}`
     );
   }
 }

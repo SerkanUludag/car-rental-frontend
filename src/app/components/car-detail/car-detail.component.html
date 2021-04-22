@@ -1,68 +1,6 @@
-<!-- <div *ngIf="dataLoaded" class="container">
-  <div
-    id="carouselExampleIndicators"
-    class="carousel slide"
-    data-bs-ride="carousel"
-  >
-    <div class="carousel-indicators">
-      <button
-        *ngFor="let carImage of carImages; let i = index"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        attr.data-bs-slide-to="{{ i }}"
-        class="{{ isCarouselActive(i) }}"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-    </div>
-
-    <div class="carousel-inner">
-      <div
-        *ngFor="let carImage of carImages; let i = index"
-        class="carousel-item {{ isCarouselActive(i) }}"
-      >
-        <img
-          src="{{ imageBasePath }}{{ carImages[i].imagePath }}"
-          class="d-block w-100"
-          alt="Slide {{ i }}"
-        />
-      </div>
-    </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
-
-<table class="table table-striped">
-  <tbody>
-    <tr>
-      <td>{{ details.carName }}</td>
-      <td>{{ details.brandName }}</td>
-      <td>{{ details.colorName }}</td>
-      <td>{{ details.dailyPrice }}</td>
-      <td>{{ details.modelYear }}</td>
-    </tr>
-  </tbody>
-</table> -->
 <p class="h2">Review Your Choice</p>
 <hr />
-<div class="container mt-4">
+<div *ngIf="dataLoaded" class="container mt-4">
   <div class="row">
     <div class="col-md-5">
       <img
@@ -98,6 +36,136 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <!-- Button trigger modal -->
+  <div class="d-flex flex-row-reverse">
+    <button
+      type="button"
+      class="btn btn-success"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      Rent Now
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">New Rental</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label
+                for="exampleFormControlInput1"
+                class="form-label text-secondary"
+                >Customer Name</label
+              >
+              <input
+                type="text"
+                class="form-control mb-1"
+                id="exampleFormControlInput1"
+                placeholder="Enter your name"
+              />
+              <hr class="text-secondary" />
+              <div class="d-flex p-2 bd-highlight justify-content-around">
+                <div>
+                  <label
+                    class="text-secondary mb-3"
+                    style="display: block"
+                    for="start"
+                    >Start date:</label
+                  >
+
+                  <input
+                    class="text-secondary"
+                    type="date"
+                    id="start"
+                    name="trip-start"
+                    min="{{ currentDate }}"
+                    max="2022-12-31"
+                    [(ngModel)]="startDate"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="text-secondary mb-3"
+                    style="display: block"
+                    for="end"
+                    >End date:</label
+                  >
+
+                  <input
+                    class="text-secondary"
+                    type="date"
+                    id="end"
+                    name="trip-end"
+                    min="{{ currentDate }}"
+                    max="2022-12-31"
+                    [(ngModel)]="endDate"
+                  />
+                </div>
+              </div>
+              <div
+                *ngIf="isRentalValid == false"
+                class="alert alert-danger mt-4 d-flex justify-content-center"
+                role="alert"
+              >
+                Car is not available between chosen dates
+              </div>
+              <div
+                *ngIf="isRentalValid == true"
+                class="alert alert-success mt-4 d-flex justify-content-center"
+                role="alert"
+              >
+                Car is available you can proceed payment page
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              *ngIf="isRentalValid != true"
+              (click)="checkRental()"
+              type="button"
+              class="btn btn-warning"
+            >
+              Check avaibility
+            </button>
+            <button
+              *ngIf="isRentalValid == true"
+              routerLink="/cars/{{ car.id }}/rent"
+              type="button"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+            >
+              Proceed payment page
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

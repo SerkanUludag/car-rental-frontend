@@ -1,6 +1,46 @@
+<input
+  type="text"
+  [(ngModel)]="filterText"
+  id="filterText"
+  placeholder="Search for model"
+  class="form-control mt-3"
+/>
+<div *ngIf="filterText.length > 2" class="alert alert-info" role="alert">
+  {{ filterText }} searched
+</div>
+
+<div class="d-flex mt-2">
+  <select
+    [(ngModel)]="selectedBrand"
+    class="form-select"
+    aria-label="Default select example"
+  >
+    <option selected>Select brand</option>
+    <option *ngFor="let brand of brands" value="{{ brand.name }}">
+      {{ brand.name }}
+    </option>
+  </select>
+  <select
+    [(ngModel)]="selectedColor"
+    class="form-select"
+    aria-label="Default select example"
+  >
+    <option selected>Select color</option>
+    <option *ngFor="let color of colors" value="{{ color.name }}">
+      {{ color.name }}
+    </option>
+  </select>
+  <input
+    (click)="filterCars()"
+    type="submit"
+    class="btn btn-success"
+    value="Filter"
+  />
+</div>
+
 <div *ngIf="dataLoaded" class="row ml-0 mr-0">
   <div
-    *ngFor="let car of carDetails; let i = index"
+    *ngFor="let car of carDetails | filterForCar: filterText; let i = index"
     class="col-md-4 col-sm-12 my-4"
   >
     <div class="card" style="width: 100%; justify-content: center">

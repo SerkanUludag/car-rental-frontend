@@ -1,0 +1,88 @@
+<!-- <div class="container">
+
+</div> -->
+
+<div *ngIf="dataLoaded" class="container mt-3 mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <div class="d-flex flex-row align-items-center">
+      <h4 class="text-uppercase mt-1">Eligible</h4>
+      <span class="ml-2">Pay</span>
+    </div>
+    <a href="#" class="cancel com-color">Cancel and return to website</a>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h5 class="mb-2 text-success">{{ currentCar.dailyPrice | currency }}</h5>
+      <h6 class="mb-3">
+        Start date:
+        <b class="text-primary">{{ startDate }}</b>
+      </h6>
+      <h6>
+        End date:
+        <b class="text-primary">{{ endDate }}</b>
+      </h6>
+      <div class="about">
+        <div class="d-flex justify-content-between"></div>
+        <hr />
+        <div class="d-flex justify-content-between align-items-center"></div>
+        <div class="d-flex flex-column">
+          <div class="mb-3">
+            <label for="ccn" class="form-label"
+              ><h6>Credit Card Number:</h6></label
+            >
+            <input
+              id="ccn"
+              [(ngModel)]="cardNumber"
+              class="form-control"
+              type="tel"
+              inputmode="numeric"
+              pattern="[0-9\s]{13,19}"
+              maxlength="19"
+              placeholder="xxxx xxxx xxxx xxxx"
+            />
+          </div>
+        </div>
+        <div *ngIf="isPaymentVerified == false" class="alert alert-danger">
+          Card number is not valid
+        </div>
+        <div class="buttons d-flex flex-row-reverse mt-3">
+          <button (click)="pay()" class="btn btn-success btn-block">
+            Finish payment
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <div class="bg-pay p-3">
+        <span class="text-success"><b>Order Recap</b></span>
+        <div class="d-flex justify-content-between mt-2">
+          <span class="fw-500">Daily rental fee</span>
+          <span>{{ currentCar.dailyPrice | currency }}</span>
+        </div>
+        <div class="d-flex justify-content-between mt-2">
+          <span class="fw-500">Fee for {{ dateDiffInDays() }} days</span>
+          <span>{{ dateDiffInDays() * currentCar.dailyPrice | currency }}</span>
+        </div>
+        <div class="d-flex justify-content-between mt-2">
+          <span class="fw-500">Vat (18%)</span>
+          <span>{{
+            dateDiffInDays() * currentCar.dailyPrice * 0.18 | currency
+          }}</span>
+        </div>
+
+        <hr />
+        <div class="d-flex justify-content-between mt-2">
+          <span class="fw-500">Total </span>
+          <span class="text-success">
+            {{
+              dateDiffInDays() * currentCar.dailyPrice
+                | vatIncluded: 18
+                | currency
+            }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

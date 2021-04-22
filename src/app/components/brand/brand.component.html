@@ -1,3 +1,13 @@
+<input
+  type="text"
+  [(ngModel)]="filterText"
+  id="filterText"
+  placeholder="Search for brand"
+  class="form-control mb-3 mt-3"
+/>
+<div *ngIf="filterText.length > 2" class="alert alert-info" role="alert">
+  {{ filterText }} searched
+</div>
 <div>
   <li
     type="button"
@@ -15,14 +25,14 @@
       [class]="getIconClass()"
     ></i>
     <span class="badge badge-primary" style="margin-left: 150px; color: black">
-      {{ brands.length }}</span
+      {{ (brands | filter: filterText).length }}</span
     >
   </li>
   <div id="brands-collapse" class="panel-collapse collapse show">
     <ul class="list-group">
       <li
         type="button"
-        *ngFor="let brand of brands"
+        *ngFor="let brand of brands | filter: filterText"
         (click)="setCurrentBrand(brand)"
         routerLink="/cars/brands/{{ brand.id }}"
         [class]="getCurrentBrandClass(brand)"
