@@ -11,20 +11,21 @@
 <div>
   <li
     type="button"
-    (click)="clearCurrentBrand()"
-    routerLink="/cars"
-    class="list-group-item list-group-item-dark cursor-pointer"
+    class="list-group-item list-group-item-dark cursor-pointer d-flex justify-content-start"
   >
-    All Brands
+    <div class="d-flex justify-content-start col-md-5">
+      <h6 (click)="clearCurrentBrand()" routerLink="/cars">All Brands</h6>
+      <i
+        style="margin-left: 5px"
+        data-bs-toggle="collapse"
+        data-bs-target="#brands-collapse"
+        (click)="setExpanded()"
+        [class]="getIconClass()"
+      ></i>
+    </div>
 
-    <i
-      style="margin-left: 5px"
-      data-bs-toggle="collapse"
-      data-bs-target="#brands-collapse"
-      (click)="setExpanded()"
-      [class]="getIconClass()"
-    ></i>
-    <span class="badge badge-primary" style="margin-left: 150px; color: black">
+    <i (click)="ngOnInit()" class="fa fa-retweet"></i>
+    <span class="badge badge-primary" style="margin-left: 120px; color: black">
       {{ (brands | filter: filterText).length }}</span
     >
   </li>

@@ -11,19 +11,20 @@
 <div>
   <li
     type="button"
-    (click)="clearCurrentColor()"
-    routerLink="/cars"
-    class="list-group-item list-group-item-dark cursor-pointer"
+    class="list-group-item list-group-item-dark cursor-pointer d-flex justify-content-start"
   >
-    All Colors
-    <i
-      style="margin-left: 5px"
-      data-bs-toggle="collapse"
-      data-bs-target="#colors-collapse"
-      (click)="setExpanded()"
-      [class]="getIconClass()"
-    ></i>
-    <span class="badge badge-primary" style="margin-left: 150px; color: black">
+    <div class="d-flex justify-content-start col-md-5">
+      <h6 (click)="clearCurrentColor()" routerLink="/cars">All Colors</h6>
+      <i
+        style="margin-left: 5px"
+        data-bs-toggle="collapse"
+        data-bs-target="#colors-collapse"
+        (click)="setExpanded()"
+        [class]="getIconClass()"
+      ></i>
+    </div>
+    <i (click)="ngOnInit()" class="fa fa-retweet"></i>
+    <span class="badge badge-primary" style="margin-left: 120px; color: black">
       {{ (colors | filter: filterText).length }}</span
     >
   </li>

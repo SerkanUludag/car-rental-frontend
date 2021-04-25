@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="card-header"><p class="h6">Car Add</p></div>
+  <div class="card-body">
+    <form [formGroup]="carAddForm">
+      <div class="mb-3">
+        <label for="brand-id" class="form-label">Brand Id</label>
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="brand-id"
+            placeholder="Enter id"
+            formControlName="brandId"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="color-id" class="form-label">Color Id</label>
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="color-id"
+            placeholder="Enter id"
+            formControlName="colorId"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="model-year" class="form-label">Model Year</label>
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="model-year"
+            placeholder="Enter model year"
+            formControlName="modelYear"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="daily-price" class="form-label">Daily Price</label>
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            id="daily-price"
+            placeholder="Enter daily price"
+            formControlName="dailyPrice"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="desc"
+            placeholder="Enter description"
+            formControlName="description"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <button (click)="add()" class="btn btn-primary">Add</button>
+  </div>
+</div>
