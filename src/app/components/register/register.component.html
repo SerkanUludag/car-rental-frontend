@@ -1,0 +1,59 @@
+<body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="registerForm">
+      <h1 class="h3 mb-3 fw-normal">Register</h1>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="fname"
+          placeholder="Your name"
+          formControlName="firstName"
+        />
+        <label for="finput">First Name</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="lname"
+          placeholder="Your last name"
+          formControlName="lastName"
+        />
+        <label for="finput">Last Name</label>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <label for="email">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <label for="password">Password</label>
+      </div>
+
+      <!-- <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me" /> Remember me
+          </label>
+        </div> -->
+      <button (click)="register()" class="w-100 btn btn-lg btn-primary">
+        Register
+      </button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    </form>
+  </main>
+</body>

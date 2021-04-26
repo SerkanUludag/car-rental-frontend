@@ -40,6 +40,9 @@ export class ColorAddComponent implements OnInit {
         this.toastr.success(response.message, 'Success');
       },
       (errorResponse) => {
+        this.toastr.info(errorResponse.error.Message);
+
+        //validation errors
         for (let i = 0; i < errorResponse.error.ValidationErrors.length; i++) {
           this.toastr.error(
             errorResponse.error.ValidationErrors[i].ErrorMessage,

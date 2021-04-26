@@ -42,6 +42,9 @@ export class BrandAddComponent implements OnInit {
           this.toastr.success(response.message, 'Success');
         },
         (errorResponse) => {
+          this.toastr.info(errorResponse.error.Message);
+
+          //validation errors
           for (
             let i = 0;
             i < errorResponse.error.ValidationErrors.length;

@@ -5,7 +5,10 @@ import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
+import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CarComponent },
@@ -13,10 +16,24 @@ const routes: Routes = [
   { path: 'cars/brands/:brandId', component: CarComponent },
   { path: 'cars/colors/:colorId', component: CarComponent },
   { path: 'cars/:carId', component: CarDetailComponent },
-  { path: 'cars/:carId/rent', component: PaymentComponent },
-  { path: 'brands/add', component: BrandAddComponent },
-  { path: 'colors/add', component: ColorAddComponent },
-  { path: 'car/add', component: CarAddComponent },
+  {
+    path: 'cars/:carId/rent',
+    component: PaymentComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'brands/add',
+    component: BrandAddComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'colors/add',
+    component: ColorAddComponent,
+    canActivate: [LoginGuard],
+  },
+  { path: 'car/add', component: CarAddComponent, canActivate: [LoginGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
