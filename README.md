@@ -1,5 +1,5 @@
 ### car-rental-frontend
-Front-end of [car-rental](https://github.com/SerkanUludag/car-rental "car-rental") project build with Angular using TypeScript.
+Front-end of [car-rental](https://github.com/SerkanUludag/car-rental "car-rental") project build with Angular using TypeScript and Bootstrap.
 
 ------------
 
