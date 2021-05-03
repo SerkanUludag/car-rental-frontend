@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { AccessToken } from 'src/app/models/auth/accessToken';
 import { LoginModel } from 'src/app/models/auth/loginModel';
 import { RegisterModel } from 'src/app/models/auth/registerModel';
+import { User } from 'src/app/models/auth/user';
+import { ResponseModel } from 'src/app/models/responseModel';
 import { SingleResponseModel } from 'src/app/models/singleResponseModel';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
@@ -13,6 +15,9 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 export class AuthService {
   apiUrlLogin = 'https://localhost:44371/api/auth/login';
   apiUrlRegister = 'https://localhost:44371/api/auth/register';
+  apiUrlGetUser = 'https://localhost:44371/api/auth/getloggeduser';
+  apiUrlUpdateUser = 'https://localhost:44371/api/auth/updateuser';
+  apiUrlUpdatePw = 'https://localhost:44371/api/auth/updatepassword';
 
   constructor(
     private httpClient: HttpClient,
@@ -41,5 +46,17 @@ export class AuthService {
     } else {
       return false;
     }
+  }
+
+  getUser(email: string): Observable<User> {
+    return this.httpClient.get<User>(this.apiUrlGetUser + '?email=' + email);
+  }
+
+  updateUser(user: User): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrlUpdateUser, user);
+  }
+
+  updatePassword(formData: FormData): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrlUpdatePw, formData);
   }
 }

@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Car } from 'src/app/models/car/car';
 import { Rental } from 'src/app/models/rental/rental';
 import { DataService } from 'src/app/services/data/data.service';
+import { LocalStorageService } from 'src/app/services/local-storage/local-storage.service';
 import { PaymentServiceService } from 'src/app/services/payment/payment-service.service';
 import { RentalService } from 'src/app/services/rental/rental.service';
 
@@ -30,6 +31,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
     private activaredRoute: ActivatedRoute,
     private dataService: DataService,
     private router: Router,
+    private localStorageService: LocalStorageService,
     private toastr: ToastrService
   ) {}
 
@@ -67,14 +69,22 @@ export class PaymentComponent implements OnInit, OnDestroy {
         newRental.returnDate = new Date(this.endDate);
         console.log(newRental);
 
-        this.rentalService.addRental(newRental).subscribe((res) => {
-          if (res.success) {
-            console.log('rental added');
-            this.toastr.success('Rent successfull');
-            this.router.navigate(['/cars']);
-          } else {
+        this.rentalService.addRental(newRental).subscribe(
+          (res) => {
+            if (res.success) {
+              console.log('rental added');
+              this.toastr.success('Rent successfull');
+              this.router.navigate(['/cars']);
+            } else {
+            }
+          },
+          (errorResponse) => {
+            if (errorResponse.error.StatusCode == 401) {
+              this.localStorageService.clear();
+              this.router.navigate(['/login']);
+            }
           }
-        });
+        );
       } else {
         this.isPaymentVerified = false;
         this.toastr.error('Invalid card number. Try again.');

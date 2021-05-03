@@ -1,0 +1,55 @@
+<div *ngIf="dataLoaded" class="d-flex justify-content-center mt-3">
+  <div class="card col-md-8">
+    <div class="card-body">
+      <h5 class="card-title">Account Settings</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        You can update your account info
+      </h6>
+      <form [formGroup]="userUpdateForm">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInput1"
+            formControlName="firstName"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInput2"
+            formControlName="lastName"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            formControlName="email"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <!-- <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div> -->
+
+        <button (click)="update()" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+  </div>
+</div>

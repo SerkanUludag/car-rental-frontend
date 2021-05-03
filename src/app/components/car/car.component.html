@@ -32,9 +32,10 @@
   </select>
   <input
     (click)="filterCars()"
-    type="submit"
-    class="btn btn-success"
+    type="button"
+    class="btn btn-outline-dark"
     value="Filter"
+    style="font-weight: 500"
   />
 </div>
 
@@ -61,7 +62,10 @@
         <hr />
         <p><b>Color :</b> {{ car.colorName }}</p>
         <hr />
-        <a routerLink="/cars/{{ cars[i].id }}" class="btn btn-outline-dark mt-2"
+        <a
+          routerLink="/cars/{{ cars[i].id }}"
+          class="btn btn-outline-dark mt-2"
+          style="font-weight: 600"
           >Details</a
         >
       </div>
